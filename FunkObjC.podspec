@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = 'FunkObjC'
-  s.version      = '0.1.0'
+  s.version      = '0.1.1'
   s.summary      = 'Functional ObjC extension'
   s.homepage     = 'https://github.com/nzrsky/FunkObjC'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true  
   s.frameworks    = 'Foundation'
   
-  s.source_files = 'FunkObjC/**/*.{m,h}'
+  s.source_files = "FunkObjC/**/*.{m,h}"
   
   pch_TARGETS = <<-EOS
 #ifndef TARGET_OS_IOS
