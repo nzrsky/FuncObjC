@@ -1,0 +1,14 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'FuncObjC_Example' do
+  pod 'FuncObjC', :path => '../'
+
+  target 'FuncObjC_Tests' do
+    inherit! :search_paths
+
+    pod 'Specta'
+    pod 'Expecta'
+  end
+end
