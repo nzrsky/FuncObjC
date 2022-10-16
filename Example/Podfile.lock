@@ -1,33 +1,32 @@
 PODS:
   - Expecta (1.0.6)
   - FuncObjC (0.1.0):
-    - ModernObjC (~> 0.1)
+    - ModernObjC (~> 0.1.2)
   - ModernObjC (0.1.2)
   - Specta (2.0.0)
 
 DEPENDENCIES:
   - Expecta
   - FuncObjC (from `../`)
-  - ModernObjC (from `/Users/nazaroff/Downloads/skim-app-code-r13084-trunk/LocalPods/ModernObjC/`)
+  - ModernObjC
   - Specta
 
 SPEC REPOS:
   trunk:
     - Expecta
+    - ModernObjC
     - Specta
 
 EXTERNAL SOURCES:
   FuncObjC:
     :path: "../"
-  ModernObjC:
-    :path: "/Users/nazaroff/Downloads/skim-app-code-r13084-trunk/LocalPods/ModernObjC/"
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  FuncObjC: e7e1a188b8b576ef4e65af4bcce1148ec53ba56e
+  FuncObjC: 7fdb48d25c4c7958af29eb703ae78165bb33d699
   ModernObjC: e01bd6926a4a8095b49ddaa51ebceaa39b5eb04e
   Specta: b79d84043684b35ffdc2680df578dc318ec2efc2
 
-PODFILE CHECKSUM: 09ad2603b24364565d5e5b35034d8356f820be2b
+PODFILE CHECKSUM: 08e22417d06860e11274f428d5d45916355e378a
 
 COCOAPODS: 1.11.3

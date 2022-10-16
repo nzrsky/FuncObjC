@@ -39,5 +39,5 @@ Pod::Spec.new do |s|
 EOS
   s.prefix_header_contents = pch_TARGETS
 
-  s.dependency 'ModernObjC', '~> 0.1'
+  s.dependency 'ModernObjC', '~> 0.1.2'
 end

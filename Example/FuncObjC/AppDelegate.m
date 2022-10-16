@@ -4,10 +4,12 @@
 
 #import "AppDelegate.h"
 @import ModernObjC;
+@import FuncObjC;
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(nullable NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions {
+    NSLog(@"%@", launchOptions);
     return YES;
 }
 
