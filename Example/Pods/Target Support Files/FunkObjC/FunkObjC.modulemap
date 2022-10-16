@@ -1,0 +1,6 @@
+framework module FunkObjC {
+  umbrella header "FunkObjC-umbrella.h"
+
+  export *
+  module * { export * }
+}

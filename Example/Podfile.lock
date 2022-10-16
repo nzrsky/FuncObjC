@@ -1,13 +1,13 @@
 PODS:
   - Expecta (1.0.6)
-  - FuncObjC (0.1.0):
+  - FunkObjC (0.1.0):
     - ModernObjC (~> 0.1.2)
   - ModernObjC (0.1.2)
   - Specta (2.0.0)
 
 DEPENDENCIES:
   - Expecta
-  - FuncObjC (from `../`)
+  - FunkObjC (from `../`)
   - ModernObjC
   - Specta
 
@@ -18,12 +18,12 @@ SPEC REPOS:
     - Specta
 
 EXTERNAL SOURCES:
-  FuncObjC:
+  FunkObjC:
     :path: "../"
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  FuncObjC: 7fdb48d25c4c7958af29eb703ae78165bb33d699
+  FunkObjC: 7fdb48d25c4c7958af29eb703ae78165bb33d699
   ModernObjC: e01bd6926a4a8095b49ddaa51ebceaa39b5eb04e
   Specta: b79d84043684b35ffdc2680df578dc318ec2efc2
 

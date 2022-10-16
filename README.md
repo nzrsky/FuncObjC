@@ -1,9 +1,9 @@
-# FuncObjC
+# FunkObjC
 
-[![CI Status](https://img.shields.io/travis/nzrsky/FuncObjC.svg?style=flat)](https://travis-ci.org/nzrsky/FuncObjC)
-[![Version](https://img.shields.io/cocoapods/v/FuncObjC.svg?style=flat)](https://cocoapods.org/pods/FuncObjC)
-[![License](https://img.shields.io/cocoapods/l/FuncObjC.svg?style=flat)](https://cocoapods.org/pods/FuncObjC)
-[![Platform](https://img.shields.io/cocoapods/p/FuncObjC.svg?style=flat)](https://cocoapods.org/pods/FuncObjC)
+[![CI Status](https://img.shields.io/travis/nzrsky/FunkObjC.svg?style=flat)](https://travis-ci.org/nzrsky/FunkObjC)
+[![Version](https://img.shields.io/cocoapods/v/FunkObjC.svg?style=flat)](https://cocoapods.org/pods/FunkObjC)
+[![License](https://img.shields.io/cocoapods/l/FunkObjC.svg?style=flat)](https://cocoapods.org/pods/FunkObjC)
+[![Platform](https://img.shields.io/cocoapods/p/FunkObjC.svg?style=flat)](https://cocoapods.org/pods/FunkObjC)
 
 ## Example
 
@@ -17,11 +17,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-FuncObjC is available through [CocoaPods](https://cocoapods.org). To install
+FunkObjC is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FuncObjC'
+pod 'FunkObjC'
 ```
 
 ## Author
@@ -30,5 +30,5 @@ Alexey Nazarov, alexx.nazaroff@gmail.com
 
 ## License
 
-FuncObjC is available under the MIT license. 
+FunkObjC is available under the MIT license. 
 See the LICENSE file for more info.

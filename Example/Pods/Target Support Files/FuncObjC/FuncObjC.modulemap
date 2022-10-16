@@ -1,6 +1,0 @@
-framework module FuncObjC {
-  umbrella header "FuncObjC-umbrella.h"
-
-  export *
-  module * { export * }
-}

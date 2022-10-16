@@ -3,15 +3,15 @@
 //
 
 #import <XCTest/XCTest.h>
-@import FuncObjC;
+@import FunkObjC;
 @import ModernObjC;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FuncObjC_Array_Test : XCTestCase
+@interface FunkObjC_Array_Test : XCTestCase
 @end
 
-@implementation FuncObjC_Array_Test
+@implementation FunkObjC_Array_Test
 
 - (void)testEvery {
     XCTAssertTrue([(@[@0, @1, @2]) hasEvery:^BOOL(NSNumber *obj, NSUInteger idx) {
@@ -125,10 +125,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface FuncObjC_Set_Test : XCTestCase
+@interface FunkObjC_Set_Test : XCTestCase
 @end
 
-@implementation FuncObjC_Set_Test
+@implementation FunkObjC_Set_Test
 
 - (void)testEvery {
     XCTAssertTrue([([NSSet setWithObjects:@0, @1, @2, nil]) hasEvery:^BOOL(NSNumber *obj) {
@@ -233,10 +233,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface FuncObjC_Dictionary_Test : XCTestCase
+@interface FunkObjC_Dictionary_Test : XCTestCase
 @end
 
-@implementation FuncObjC_Dictionary_Test
+@implementation FunkObjC_Dictionary_Test
 
 - (void)testEvery {
     XCTAssertTrue([(@{@0: @0, @1: @1, @2: @2}) hasEvery:^BOOL(NSNumber *key, NSNumber *obj) {
@@ -338,10 +338,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface FuncObjC_Test : XCTestCase
+@interface FunkObjC_Test : XCTestCase
 @end
 
-@implementation FuncObjC_Test
+@implementation FunkObjC_Test
 
 - (void)testComparator {
     XCTAssertEqualObjects(([@[@100, @0, @2] sortedArrayUsingComparator:FOBlockComparator(^BOOL(NSNumber  *a, NSNumber *b) {
