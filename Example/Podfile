@@ -10,5 +10,6 @@ target 'FuncObjC_Example' do
 
     pod 'Specta'
     pod 'Expecta'
+    pod 'ModernObjC'
   end
 end

@@ -20,9 +20,9 @@
 // THE SOFTWARE.
 
 @import Foundation;
-#import <ModernObjC/ModernObjC.h>
+@import ModernObjC;
 
-#define FCT_USE_PREFIX
+// #define FCT_USE_PREFIX
 
 #if defined(FCT_USE_PREFIX)
     #if !defined(FCT_PREFIX)
@@ -37,12 +37,12 @@
 //
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSArray<ItemType> (Fnctr)
+@interface NSArray<__covariant ItemType> (FuncObjC)
 
-- (BOOL)FCT_PREFIX(every):(BOOL (^)(ItemType item, NSUInteger idx))predicate WARN_UNUSED_RESULT;
-- (BOOL)FCT_PREFIX(any):(BOOL (^)(ItemType item, NSUInteger idx))predicate WARN_UNUSED_RESULT;
+- (BOOL)FCT_PREFIX(hasEvery):(BOOL (^)(ItemType item, NSUInteger idx))predicate WARN_UNUSED_RESULT;
+- (BOOL)FCT_PREFIX(hasAny):(BOOL (^)(ItemType item, NSUInteger idx))predicate WARN_UNUSED_RESULT;
+
 - (ItemType _Nullable)FCT_PREFIX(first):(BOOL (^)(ItemType item, NSUInteger idx))predicate WARN_UNUSED_RESULT;
-
 - (NSArray<ItemType> *)FCT_PREFIX(filter):(BOOL (^)(ItemType item, NSUInteger idx))predicate WARN_UNUSED_RESULT;
 
 /// Returns an array containing the results of mapping the given closure
@@ -63,7 +63,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// - Returns: An array containing the transformed elements of this
 ///   sequence.
 - (NSArray *)FCT_PREFIX(map):(id (^)(ItemType item, NSUInteger idx))transform WARN_UNUSED_RESULT;
-
 - (NSArray *)FCT_PREFIX(compactMap):(id (^)(ItemType item, NSUInteger idx))transform WARN_UNUSED_RESULT;
 - (NSArray<ItemType> *)FCT_PREFIX(compact) WARN_UNUSED_RESULT;
 
@@ -76,11 +75,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface NSSet<ItemType> (Fnctr)
-- (BOOL)FCT_PREFIX(every):(BOOL (^)(ItemType item))predicate WARN_UNUSED_RESULT;
-- (BOOL)FCT_PREFIX(any):(BOOL (^)(ItemType item))predicate WARN_UNUSED_RESULT;
-- (ItemType _Nullable)FCT_PREFIX(first):(BOOL (^)(ItemType item))predicate WARN_UNUSED_RESULT;
+@interface NSSet<__covariant ItemType> (FuncObjC)
 
+- (BOOL)FCT_PREFIX(hasEvery):(BOOL (^)(ItemType item))predicate WARN_UNUSED_RESULT;
+- (BOOL)FCT_PREFIX(hasAny):(BOOL (^)(ItemType item))predicate WARN_UNUSED_RESULT;
+
+- (ItemType _Nullable)FCT_PREFIX(first):(BOOL (^)(ItemType item))predicate WARN_UNUSED_RESULT;
 - (NSArray<ItemType> *)FCT_PREFIX(filter):(BOOL (^)(ItemType item))predicate WARN_UNUSED_RESULT;
 
 - (NSArray *)FCT_PREFIX(map):(id (^)(ItemType item))transform WARN_UNUSED_RESULT;
@@ -94,16 +94,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface NSDictionary<KeyType, ValueType> (Fnctr)
-- (BOOL)FCT_PREFIX(every):(BOOL (^)(KeyType key, ValueType obj))predicate WARN_UNUSED_RESULT;
-- (BOOL)FCT_PREFIX(some):(BOOL (^)(KeyType key, ValueType obj))predicate WARN_UNUSED_RESULT;
-- (ValueType)FCT_PREFIX(first):(BOOL (^)(KeyType key, ValueType obj))predicate WARN_UNUSED_RESULT;
+@interface NSDictionary<__covariant KeyType, __covariant ValueType> (FuncObjC)
 
+- (BOOL)FCT_PREFIX(hasEvery):(BOOL (^)(KeyType key, ValueType obj))predicate WARN_UNUSED_RESULT;
+- (BOOL)FCT_PREFIX(hasAny):(BOOL (^)(KeyType key, ValueType obj))predicate WARN_UNUSED_RESULT;
+
+- (ValueType)FCT_PREFIX(first):(BOOL (^)(KeyType key, ValueType obj))predicate WARN_UNUSED_RESULT;
 - (NSDictionary<KeyType, ValueType> *)FCT_PREFIX(filter):(BOOL (^)(KeyType key, ValueType obj))predicate WARN_UNUSED_RESULT;
 
 - (NSDictionary<KeyType, id> *)FCT_PREFIX(mapObjects):(id (^)(KeyType key, ValueType obj))transform WARN_UNUSED_RESULT;
 - (NSDictionary<id, ValueType> *)FCT_PREFIX(mapKeys):(id (^)(KeyType key, ValueType obj))transform WARN_UNUSED_RESULT;
-- (NSArray<ValueType> *)FCT_PREFIX(compact) WARN_UNUSED_RESULT;
+- (NSDictionary<KeyType, ValueType> *)FCT_PREFIX(compact) WARN_UNUSED_RESULT;
 
 - (id _Nullable)FCT_PREFIX(reduce):(id _Nullable (^)(id _Nullable value, KeyType key, ValueType obj))transform;
 - (id _Nullable)FCT_PREFIX(reduce):(id _Nullable (^)(id _Nullable value, KeyType key, ValueType obj))transform initial:(id _Nullable)initial;
@@ -112,6 +113,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NSComparator FLBlockComparator(BOOL (^less)(id a, id b));
+extern NSComparator FOBlockComparator(BOOL (^less)(id a, id b));
 
 NS_ASSUME_NONNULL_END

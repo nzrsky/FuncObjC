@@ -21,14 +21,11 @@
 
 #import "FuncObjC.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-@implementation NSArray (Fnctr)
-#pragma clang diagnostic pop
+NS_ASSUME_NONNULL_BEGIN
 
-@dynamic FCT_PREFIX(typedObjectEnumerator);
+@implementation NSArray (FuncObjC)
 
-- (BOOL)FCT_PREFIX(every):(BOOL (^)(id item, NSUInteger idx))predicate {
+- (BOOL)FCT_PREFIX(hasEvery):(BOOL (^)(id item, NSUInteger idx))predicate {
     for (NSUInteger i = 0; i < self.count; ++i) {
         if (!predicate(self[i], i)) {
             return NO;
@@ -37,7 +34,7 @@
     return YES;
 }
 
-- (BOOL)FCT_PREFIX(any):(BOOL (^)(id item, NSUInteger idx))predicate {
+- (BOOL)FCT_PREFIX(hasAny):(BOOL (^)(id item, NSUInteger idx))predicate {
     return [self FCT_PREFIX(first):predicate] != nil;
 }
 
@@ -73,7 +70,7 @@
 
     let arr = [NSMutableArray arrayWithCapacity:self.count];
     [self enumerateObjectsUsingBlock:^(id item, NSUInteger idx, BOOL *stop) {
-        let next = transform(item, idx);
+        id const next = transform(item, idx);
         if (next) {
             [arr addObject:next];
         }
@@ -82,12 +79,12 @@
     return arr.copy;
 }
 
-- (id)FCT_PREFIX(reduce):(id (^)(id value, id next, NSUInteger idx))transform {
+- (id _Nullable)FCT_PREFIX(reduce):(id _Nullable (^)(id _Nullable value, id next, NSUInteger idx))transform {
     return [self FCT_PREFIX(reduce):transform initial:nil];
 }
 
-- (id)FCT_PREFIX(reduce):(id (^)(id value, id next, NSUInteger idx))transform initial:(id _Nullable)initial {
-    var val = initial;
+- (id _Nullable)FCT_PREFIX(reduce):(id _Nullable (^)(id _Nullable value, id next, NSUInteger idx))transform initial:(id _Nullable)initial {
+    id val = initial;
     for (NSUInteger i = 0; i < self.count; ++i) {
         val = transform(val, self[i], i);
     }
@@ -110,13 +107,9 @@
 
 @end
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-@implementation NSSet (Fnctr)
-#pragma clang diagnostic pop
-@dynamic FCT_PREFIX(typedObjectEnumerator);
+@implementation NSSet (FuncObjC)
 
-- (BOOL)FCT_PREFIX(every):(BOOL (^)(id item))predicate {
+- (BOOL)FCT_PREFIX(hasEvery):(BOOL (^)(id item))predicate {
     for (id item in self) {
         if (!predicate(item)) {
             return NO;
@@ -125,7 +118,7 @@
     return YES;
 }
 
-- (BOOL)FCT_PREFIX(any):(BOOL (^)(id item))predicate {
+- (BOOL)FCT_PREFIX(hasAny):(BOOL (^)(id item))predicate {
     return [self FCT_PREFIX(first):predicate] != nil;
 }
 
@@ -160,7 +153,7 @@
 
     let set = [NSMutableSet setWithCapacity:self.count];
     [self enumerateObjectsUsingBlock:^(id item, BOOL *stop){
-        let next = transform(item);
+        id const next = transform(item);
         if (next) {
             [set addObject:next];
         }
@@ -169,12 +162,12 @@
     return set.copy;
 }
 
-- (id)FCT_PREFIX(reduce):(id (^)(id value, id next))transform {
+- (id _Nullable)FCT_PREFIX(reduce):(id _Nullable (^)(id _Nullable value, id next))transform {
     return [self FCT_PREFIX(reduce):transform initial:nil];
 }
 
-- (id)FCT_PREFIX(reduce):(id (^)(id value, id next))transform initial:(id _Nullable)initial {
-    var val = initial;
+- (id _Nullable)FCT_PREFIX(reduce):(id _Nullable (^)(id _Nullable value, id next))transform initial:(id _Nullable)initial {
+    id val = initial;
     for (id item in self) {
         val = transform(val, item);
     }
@@ -193,13 +186,9 @@
 
 @end
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-@implementation NSDictionary (Fnctr)
-#pragma clang diagnostic pop
-@dynamic FCT_PREFIX(typedObjectEnumerator);
+@implementation NSDictionary (FuncObjC)
 
-- (BOOL)FCT_PREFIX(every):(BOOL (^)(id, id))transform {
+- (BOOL)FCT_PREFIX(hasEvery):(BOOL (^)(id, id))transform {
     if (transform) {
         for (id key in self.allKeys) {
             if (!transform(key, self[key])) {
@@ -210,7 +199,7 @@
     return YES;
 }
 
-- (BOOL)FCT_PREFIX(any):(BOOL (^)(id, id))transform {
+- (BOOL)FCT_PREFIX(hasAny):(BOOL (^)(id, id))transform {
     if (transform) {
         for (id key in self.allKeys) {
             if (transform(key, self[key])) {
@@ -221,24 +210,33 @@
     return NO;
 }
 
-- (instancetype)FCT_PREFIX(filter):(BOOL (^)(id, id, BOOL *))transform {
-    if (!transform) { return nil; }
+- (id)FCT_PREFIX(filter):(BOOL (^)(id key, id obj))predicate {
+    let dict = [NSMutableDictionary dictionaryWithCapacity:self.count];
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
+        if (predicate(key, obj)) {
+            dict[key] = obj;
+        }
+    }];
 
-    return [self objectsForKeys:[self keysOfEntriesPassingTest:transform].allObjects notFoundMarker:NSNull.null];
+    return dict.copy;
 }
 
-- (id)FCT_PREFIX(first):(BOOL (^)(id, id, BOOL *))transform {
-    if (!transform) { return nil; }
-
-    return self[[self keysOfEntriesPassingTest:transform].anyObject];
+- (id)FCT_PREFIX(first):(BOOL (^)(id key, id obj))predicate {
+    if (!predicate) { return nil; }
+    return self[[self keysOfEntriesPassingTest:^BOOL(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        return predicate(key, obj);
+    }].anyObject];
 }
 
-- (NSArray *)FCT_PREFIX(compact) {
-//    return [self FCT_PREFIX(filter):^BOOL(id key, id obj, BOOL *stop) {
-//        return ![obj isEqual:[NSNull null]];
-//    }];
-    NSAssert(false, @"");
-    exit(0);
+- (id)FCT_PREFIX(compact) {
+    let dict = [NSMutableDictionary dictionaryWithCapacity:self.count];
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
+        if (![obj isEqual:NSNull.null]) {
+            dict[key] = obj;
+        }
+    }];
+
+    return dict.copy;
 }
 
 - (instancetype)FCT_PREFIX(mapObjects):(id (^)(id, id))transform {
@@ -263,14 +261,14 @@
     return dict.copy;
 }
 
-- (id)FCT_PREFIX(reduce):(id (^)(id, id, id))transform {
+- (id _Nullable)FCT_PREFIX(reduce):(id _Nullable (^)(id _Nullable value, id key, id obj))transform {
     return [self FCT_PREFIX(reduce):transform initial:nil];
 }
 
-- (id)FCT_PREFIX(reduce):(id (^)(id, id, id))transform initial:(id)initial {
+- (id _Nullable)FCT_PREFIX(reduce):(id _Nullable (^)(id _Nullable value, id key, id obj))transform initial:(id _Nullable)initial {
     if (!transform) { return initial; }
 
-    var val = initial;
+    id val = initial;
     for (id key in self.allKeys) {
         val = transform(val, key, self[key]);
     }
@@ -283,8 +281,10 @@
 
 @end
 
-NSComparator BlockComparator(BOOL (^less)(id a, id b)) {
+NSComparator FOBlockComparator(BOOL (^less)(id a, id b)) {
     return ^(id a, id b) {
         return less(a, b) ? NSOrderedAscending : (less(b, a) ? NSOrderedDescending : NSOrderedSame);
     };
 }
+
+NS_ASSUME_NONNULL_END

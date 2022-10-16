@@ -304,10 +304,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FuncObjC_Example/Pods-FuncObjC_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FuncObjC/FuncObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/ModernObjC/ModernObjC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FuncObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ModernObjC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -321,11 +323,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FuncObjC_Tests/Pods-FuncObjC_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ModernObjC/ModernObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework",
 				"${BUILT_PRODUCTS_DIR}/Specta/Specta.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ModernObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Specta.framework",
 			);

@@ -3,6 +3,7 @@
 //
 
 #import "AppDelegate.h"
+@import ModernObjC;
 
 @implementation AppDelegate
 

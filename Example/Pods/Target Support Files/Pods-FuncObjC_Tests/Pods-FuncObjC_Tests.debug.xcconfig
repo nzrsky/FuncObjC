@@ -1,9 +1,9 @@
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$(PLATFORM_DIR)/Developer/Library/Frameworks" "${PODS_CONFIGURATION_BUILD_DIR}/Expecta" "${PODS_CONFIGURATION_BUILD_DIR}/FuncObjC" "${PODS_CONFIGURATION_BUILD_DIR}/Specta"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$(PLATFORM_DIR)/Developer/Library/Frameworks" "${PODS_CONFIGURATION_BUILD_DIR}/Expecta" "${PODS_CONFIGURATION_BUILD_DIR}/FuncObjC" "${PODS_CONFIGURATION_BUILD_DIR}/ModernObjC" "${PODS_CONFIGURATION_BUILD_DIR}/Specta"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Expecta/Expecta.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/FuncObjC/FuncObjC.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Specta/Specta.framework/Headers" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/ModernObjC"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Expecta/Expecta.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/FuncObjC/FuncObjC.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/ModernObjC/ModernObjC.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Specta/Specta.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "Expecta" -framework "Foundation" -framework "FuncObjC" -framework "Specta" -framework "XCTest"
+OTHER_LDFLAGS = $(inherited) -framework "Expecta" -framework "Foundation" -framework "FuncObjC" -framework "ModernObjC" -framework "Specta" -framework "XCTest"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
