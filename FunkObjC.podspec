@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = 'FunkObjC'
-  s.version      = '0.1.1'
+  s.version      = '0.2.0'
   s.summary      = 'Functional ObjC extension'
   s.homepage     = 'https://github.com/nzrsky/FunkObjC'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

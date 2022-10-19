@@ -101,6 +101,10 @@ NS_ASSUME_NONNULL_BEGIN
     return [NSDictionary dictionaryWithObjects:self forKeys:[self FCT_PREFIX(map):transform]];
 }
 
+- (NSDictionary<id, id> *)FCT_PREFIX(dictionaryWithValues):(id (^)(id key, NSUInteger idx))transform {
+    return [NSDictionary dictionaryWithObjects:[self FCT_PREFIX(map):transform] forKeys:self];
+}
+
 - (BOOL)FCT_PREFIX(isEmpty) {
     return self.count == 0;
 }

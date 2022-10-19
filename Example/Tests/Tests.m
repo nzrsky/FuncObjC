@@ -111,6 +111,19 @@ NS_ASSUME_NONNULL_BEGIN
     XCTAssertEqualObjects(([@[ @0, @1] dictionaryWithKeys:^id(id obj, NSUInteger idx) {
         return nil;
     }]), (@{ [NSNull null]: @0 }));
+
+    XCTAssertEqualObjects(
+       ([@[ @0, @1] dictionaryWithValues:^id(id obj, NSUInteger idx) { return [[obj stringValue] stringByAppendingString:@"_"]; }]),
+       (@{ @0: @"0_", @1: @"1_"  })
+    );
+
+    XCTAssertEqualObjects(([@[] dictionaryWithValues:^id(id obj, NSUInteger idx) {
+        return [[obj stringValue] stringByAppendingString:@"_"];
+    }]), (@{}));
+
+    XCTAssertEqualObjects(([@[ @0, @1] dictionaryWithValues:^id(id obj, NSUInteger idx) {
+        return nil;
+    }]), (@{ @0: NSNull.null, @1: NSNull.null }));
 }
 
 - (void)testIsEmpty {

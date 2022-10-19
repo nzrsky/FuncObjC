@@ -70,6 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id _Nullable)FCT_PREFIX(reduce):(ItemType _Nullable (^)(ItemType _Nullable value, ItemType next, NSUInteger idx))transform initial:(ItemType _Nullable)initial;
 
 - (NSDictionary<id, ItemType> *)FCT_PREFIX(dictionaryWithKeys):(id (^)(ItemType value, NSUInteger idx))transform WARN_UNUSED_RESULT;
+- (NSDictionary<ItemType, id> *)FCT_PREFIX(dictionaryWithValues):(id (^)(ItemType key, NSUInteger idx))transform WARN_UNUSED_RESULT;
 
 @property (nonatomic, assign, readonly) BOOL FCT_PREFIX(isEmpty);
 
