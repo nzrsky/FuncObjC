@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = 'FunkObjC'
-  s.version      = '0.2.0'
+  s.version      = '0.2.1'
   s.summary      = 'Functional ObjC extension'
   s.homepage     = 'https://github.com/nzrsky/FunkObjC'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
@@ -39,5 +39,5 @@ Pod::Spec.new do |s|
 EOS
   s.prefix_header_contents = pch_TARGETS
 
-  s.dependency 'ModernObjC', '~> 0.1.2'
+  s.dependency 'ModernObjC', '>= 0.1.2'
 end
